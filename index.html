@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
+    <title>Galeria de [SEU NOME AQUI]</title>
+
+    <style>
+        /* =========================================
+           🎨 ÁREA DE ESTILOS (CSS) - PERSONALIZE AQUI
+           ========================================= */
+       
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, sans-serif; /* 🎨 ALUNO: Pode trocar a fonte se quiser */
+        }
+
+        body {
+            /* 🎨 ALUNO: Troque a cor de fundo da página. Tente 'lightblue', '#ffeaa7' ou '#2d3436' */
+            background-color: #f4f7f6;
+            color: #333;
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            /* 🎨 ALUNO: Cor de fundo do cabeçalho */
+            background-color: #ffffff;
+            border-bottom: 2px solid #ddd;
+        }
+
+        header h1 {
+            /* 🎨 ALUNO: Cor do título principal */
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        .gallery-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            padding: 40px 20px;
+        }
+
+        .card {
+            background-color: #ffffff;
+            border-radius: 15px; /* 🎨 ALUNO: Aumente ou diminua o arredondamento das bordas (ex: 0px ou 30px) */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            width: 300px;
+            transition: transform 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+        }
+
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 20px;
+        }
+
+        .card-content h3 {
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+
+        .card-content p {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+
+        /* --- Estilo do Botão de Curtida --- */
+        .like-btn {
+            /* 🎨 ALUNO: Cor do botão normal (Tente 'blue' ou '#0984e3') */
+            background-color: #ff4757;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        /* 🎨 ALUNO: Cor do botão quando o mouse passa por cima */
+        .like-btn:hover {
+            background-color: #e84118;
+        }
+
+        /* 🎨 ALUNO: Cor do botão QUANDO ESTIVER CURTIDO! */
+        .like-btn.liked {
+            background-color: #2ed573; /* Verde para mostrar que curtiu */
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>🚀 O Mundo de [SEU NOME]</h1>
+        <p>Bem-vindo ao meu primeiro projeto de programação. Aqui estão minhas coisas favoritas!</p>
+    </header>
+
+    <main class="gallery-container">
+
+        <div class="card">
+            <img src="https://picsum.photos/id/1015/300/200&quot; alt="Imagem 1">
+            <div class="card-content">
+                <h3>Meu Hobby Favorito</h3>
+                <p>Aqui você pode escrever sobre algo que você ama fazer no seu tempo livre.</p>
+                <button class="like-btn">❤️ <span class="like-count">0</span> Curtidas</button>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="https://picsum.photos/id/1025/300/200&quot; alt="Imagem 2">
+            <div class="card-content">
+                <h3>Meu Animal Preferido</h3>
+                <p>Cachorros? Gatos? Capivaras? Escreva sobre o seu animal favorito aqui.</p>
+                <button class="like-btn">⭐ <span class="like-count">0</span> Curtidas</button>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="https://picsum.photos/id/1043/300/200&quot; alt="Imagem 3">
+            <div class="card-content">
+                <h3>Um Lugar Incrível</h3>
+                <p>Qual lugar no mundo você sonha em conhecer ou adora visitar?</p>
+                <button class="like-btn">🔥 <span class="like-count">0</span> Curtidas</button>
+            </div>
+        </div>
+
+    </main>
+
+    <script>
+        const botoesLike = document.querySelectorAll('.like-btn');
+
+        botoesLike.forEach(function(botao) {
+            botao.addEventListener('click', function() {
+                const spanContador = botao.querySelector('.like-count');
+                let curtidasAtuais = parseInt(spanContador.textContent);
+               
+                if (botao.classList.contains('liked')) {
+                    botao.classList.remove('liked');
+                    curtidasAtuais--;
+                } else {
+                    botao.classList.add('liked');
+                    curtidasAtuais++;
+                }
+               
+                spanContador.textContent = curtidasAtuais;
+            });
+        });
+    </script>
+</body>
+</html>
